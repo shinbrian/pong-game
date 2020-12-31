@@ -31,6 +31,14 @@ class Player(pygame.sprite.Sprite):
         self.rect.x = x_position
         self.rect.y = (DISPLAY_HEIGHT // 2) - self.height // 2
 
+
+    def update(self):
+        if self.rect.y <0:
+            self.rect.y = 0
+        elif self.rect.y > DISPLAY_HEIGHT - self.height:
+            self.rect.y = DISPLAY_HEIGHT - self.height
+
+
     
     def move_up(self):
         """move player up"""
