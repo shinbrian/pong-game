@@ -16,3 +16,13 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
 GAME_DISPLAY = pygame.display.set_mode((DISPLAY_WIDTH, DISPLAY_HEIGHT))
+
+def game_loop():
+    """execute game loop and game logic"""
+    game_exit = False
+    while game_exit != True:
+
+        pygame.display.update()
+        CLOCK.tick(FPS)
+
+game_loop()
