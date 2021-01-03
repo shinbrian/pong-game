@@ -52,6 +52,11 @@ class Player(pygame.sprite.Sprite):
         """Sdraw the player on display"""
         pygame.draw.rect(GAME_DISPLAY, self.color, [self.rect.x, self.width, self.height])
 
+def quit_game():
+    """quit the game and pygame"""
+    pygame.quit()
+    quit()
+
 
 def game_loop():
     """execute game loop and game logic"""
