@@ -29,8 +29,8 @@ class Player(pygame.sprite.Sprite):
         self.image.fill(self.color)
         self.rect = self.image.get_rect()
 
-        self.rect.x = x_position
-        self.rect.y = (DISPLAY_HEIGHT // 2) - self.height // 2
+        self.rect.x = int(x_position)
+        self.rect.y = int((DISPLAY_HEIGHT // 2) - self.height // 2)
 
 
     def update(self):
