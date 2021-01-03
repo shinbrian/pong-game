@@ -70,7 +70,7 @@ class Ball(pygame.sprite.Sprite):
         self.rect.y = int(DISPLAY_HEIGHT * 0.5 - (self.side_length * 0.5))
 
 
-        self.max)bounce_angle = 70
+        self.max_bounce_angle = 70
 
 
 
