@@ -48,6 +48,10 @@ class Player(pygame.sprite.Sprite):
         """move player down"""
         self.rect.y += 15
 
+    def render(self):
+        """Sdraw the player on display"""
+        pygame.draw.rect(GAME_DISPLAY, self.color, [self.rect.x, self.width, self.height])
+
 
 def game_loop():
     """execute game loop and game logic"""
