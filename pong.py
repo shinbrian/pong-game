@@ -52,6 +52,32 @@ class Player(pygame.sprite.Sprite):
         """Sdraw the player on display"""
         pygame.draw.rect(GAME_DISPLAY, self.color, [self.rect.x, self.width, self.height])
 
+
+class Ball(pygame.sprite.Sprite):
+    """class for pong ball object"""
+    def __init__(self):
+        super().__init__()
+
+        self.side_length = 10
+        self.color = WHITE
+        self.image = pygame.Surface([self.side_length, self.side_length])
+        self.image.fill(self.color)
+        self.rect = self.image.get_rect
+
+
+        self.rect.x = int(DISPLAY_WIDTH * 0.5 - (self.side_length * 0.5))
+        self.rect.y = int(DISPLAY_HEIGHT * 0.5 - (self.side_length * 0.5))
+
+
+        self.max)bounce_angle = 70
+
+
+        
+
+
+
+
+
 def quit_game():
     """quit the game and pygame"""
     pygame.quit()
