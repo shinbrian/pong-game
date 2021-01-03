@@ -20,6 +20,7 @@ GAME_DISPLAY = pygame.display.set_mode((DISPLAY_WIDTH, DISPLAY_HEIGHT))
 class Player(pygame.sprite.Sprite):
     """player class for player object"""
     def __init__(self, x_position):
+        super().__init__()
         self.width = 15
         self.height = 90
 
@@ -70,10 +71,6 @@ class Ball(pygame.sprite.Sprite):
 
 
         self.max)bounce_angle = 70
-
-
-        
-
 
 
 
