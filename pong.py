@@ -77,6 +77,12 @@ class Ball(pygame.sprite.Sprite):
         self.rect.y = self.y_velocity
 
 
+    def wall_bounce(slef):
+        """checks for bounce condition and calculates new velocities"""
+        if self.rect.y <=0 or self.rect.y >= (DISPLAY_HEIGHT - self.side_length):
+            self.y_velocity *= -1
+
+
 
 
 def quit_game():
