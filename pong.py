@@ -1,4 +1,4 @@
-import time
+ import time
 
 import pygame
 
@@ -49,10 +49,7 @@ class Player(pygame.sprite.Sprite):
         """move player down"""
         self.rect.y += 15
 
-    def render(self):
-        """Sdraw the player on display"""
-        pygame.draw.rect(GAME_DISPLAY, self.color, [self.rect.x, self.width, self.height])
-
+   
 
 class Ball(pygame.sprite.Sprite):
     """class for pong ball object"""
@@ -71,6 +68,13 @@ class Ball(pygame.sprite.Sprite):
 
 
         self.max_bounce_angle = 70
+        self.x_velocity = 8.0
+        self.y_velocity = 8.0
+
+    def update(self):
+        """updater rectangle position with the velocities"""
+        self.rect.x = self.x_velocity
+        self.rect.y = self.y_velocity
 
 
 
