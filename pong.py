@@ -107,6 +107,17 @@ def quit_game():
     pygame.quit()
     quit()
 
+ball = Ball()
+
+pong_balls = pygame.sprite.Group()
+pong_balls.add(ball)
+
+player_one = Player(DISPLAY_WIDTH * 0.1)
+player_two = Player(DISPLAY_WIDTH * 0.9)
+
+pong_players = pygame.sprite.Group()
+pong_players.add(player_one)
+pong_players.add(player_two)
 
 def game_loop():
     """executes game loop and game logic"""
