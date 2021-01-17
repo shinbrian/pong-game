@@ -1,4 +1,5 @@
- import time
+import time
+import math
 
 import pygame
 
@@ -82,6 +83,21 @@ class Ball(pygame.sprite.Sprite):
         """checks for bounce condition and calculates new velocities"""
         if self.rect.y <=0 or self.rect.y >= (DISPLAY_HEIGHT - self.side_length):
             self.y_velocity *= -1
+
+    def player_bounce(self, player, player_designation):
+        """calculates ball velocities for player bounce"""
+        ball_speed = 11
+        intersect_y = player.rect.y + (player.side_length / 2) - self.rect.y + (self.side_length / 2)
+        normalized_intersect_y = math.fabs((intersectt_y / plater.height /2))
+        bounce_angle = normalized_intersect_y * self.max_bounce_angle
+
+        if player_designation == "P1":
+            self.x_velocity = ball_speed * math.fabs(math.cos(bounce_angle))
+            self.y_velocity = ball_speed * math.sin(bounce_angle)
+
+        elif player_designation == "P2":
+            self.x_velocity = ball_speed * math.fabs(math.cos(bounce_angle)) * -1
+            self.y_velocity = ball_speed * math.sin(bounce_angle)
 
 
 
