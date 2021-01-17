@@ -34,6 +34,7 @@ class Player(pygame.sprite.Sprite):
 
 
     def update(self):
+        """updates player checks boundaries"""
         if self.rect.y <0:
             self.rect.y = 0
         elif self.rect.y > DISPLAY_HEIGHT - self.height:
@@ -42,11 +43,11 @@ class Player(pygame.sprite.Sprite):
 
     
     def move_up(self):
-        """move player up"""
+        """moves player up"""
         self.rect.y -= 15
 
     def move_down(self):
-        """move player down"""
+        """moves player down"""
         self.rect.y += 15
 
    
@@ -72,7 +73,7 @@ class Ball(pygame.sprite.Sprite):
         self.y_velocity = 8.0
 
     def update(self):
-        """updater rectangle position with the velocities"""
+        """updates rectangle position with the velocities"""
         self.rect.x = self.x_velocity
         self.rect.y = self.y_velocity
 
@@ -86,13 +87,13 @@ class Ball(pygame.sprite.Sprite):
 
 
 def quit_game():
-    """quit the game and pygame"""
+    """quits the game and pygame"""
     pygame.quit()
     quit()
 
 
 def game_loop():
-    """execute game loop and game logic"""
+    """executes game loop and game logic"""
     game_exit = False
     while game_exit != True:
 
