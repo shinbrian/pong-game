@@ -75,8 +75,8 @@ class Ball(pygame.sprite.Sprite):
 
     def update(self):
         """updates rectangle position with the velocities"""
-        self.rect.x = self.x_velocity
-        self.rect.y = self.y_velocity
+        self.rect.x += self.x_velocity
+        self.rect.y += self.y_velocity
 
 
     def wall_bounce(self):
@@ -124,12 +124,26 @@ def game_loop():
     game_exit = False
     while game_exit != True:
 
-        pong_paddles.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                quit_game()
+
+        pressed_buttons = pygame.key.get_pressed()
+        if pressed_buttons[pygame.K_w] == True:
+            player_one.move_up()
+        elif pressed_buttons[pygame.K_s] == True:
+            player_one.move_down()
+
+        if pressed_buttons[pygame.K_UP] == True:
+            player_two.move_up()
+        elif pressed_buttons[pygame.K_DOWN] == True:
+            player_two.move_down()
+        pong_players.update()
         pong_balls.update()
 
         GAME_DISPLAY.fill(BLACK)
 
-        pong_paddles.draw(GAME_DISPLAY)
+        pong_players.draw(GAME_DISPLAY)
         pong_balls.draw(GAME_DISPLAY)
 
 
