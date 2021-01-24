@@ -124,6 +124,15 @@ def game_loop():
     game_exit = False
     while game_exit != True:
 
+        pong_paddles.update()
+        pong_balls.update()
+
+        GAME_DISPLAY.fill(BLACK)
+
+        pong_paddles.draw(GAME_DISPLAY)
+        pong_balls.draw(GAME_DISPLAY)
+
+
         pygame.display.update()
         CLOCK.tick(FPS)
 
