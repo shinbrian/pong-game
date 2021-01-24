@@ -62,7 +62,7 @@ class Ball(pygame.sprite.Sprite):
         self.color = WHITE
         self.image = pygame.Surface([self.side_length, self.side_length])
         self.image.fill(self.color)
-        self.rect = self.image.get_rect
+        self.rect = self.image.get_rect()
 
 
         self.rect.x = int(DISPLAY_WIDTH * 0.5 - (self.side_length * 0.5))
@@ -79,7 +79,7 @@ class Ball(pygame.sprite.Sprite):
         self.rect.y = self.y_velocity
 
 
-    def wall_bounce(slef):
+    def wall_bounce(self):
         """checks for bounce condition and calculates new velocities"""
         if self.rect.y <=0 or self.rect.y >= (DISPLAY_HEIGHT - self.side_length):
             self.y_velocity *= -1
@@ -88,7 +88,7 @@ class Ball(pygame.sprite.Sprite):
         """calculates ball velocities for player bounce"""
         ball_speed = 11
         intersect_y = player.rect.y + (player.side_length / 2) - self.rect.y + (self.side_length / 2)
-        normalized_intersect_y = math.fabs((intersectt_y / plater.height /2))
+        normalized_intersect_y = math.fabs((intersect_y / player.height /2))
         bounce_angle = normalized_intersect_y * self.max_bounce_angle
 
         if player_designation == "P1":
