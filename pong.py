@@ -70,8 +70,8 @@ class Ball(pygame.sprite.Sprite):
 
 
         self.max_bounce_angle = 70
-        self.x_velocity = 8.0
-        self.y_velocity = 8.0
+        self.x_velocity = 4.0
+        self.y_velocity = 4.0
 
     def update(self):
         """updates rectangle position with the velocities"""
@@ -86,18 +86,18 @@ class Ball(pygame.sprite.Sprite):
 
     def player_bounce(self, player, player_designation):
         """calculates ball velocities for player bounce"""
-        ball_speed = 11
-        intersect_y = player.rect.y + (player.side_length / 2) - self.rect.y + (self.side_length / 2)
+        ball_speed = 7
+        intersect_y = player.rect.y + (player.width / 2) - self.rect.y + (self.side_length / 2)
         normalized_intersect_y = math.fabs((intersect_y / player.height /2))
         bounce_angle = normalized_intersect_y * self.max_bounce_angle
 
         if player_designation == "P1":
             self.x_velocity = ball_speed * math.fabs(math.cos(bounce_angle))
-            self.y_velocity = ball_speed * math.sin(bounce_angle)
+            self.y_velocity = ball_speed * math.fabs(math.sin(bounce_angle)) * -1
 
         elif player_designation == "P2":
             self.x_velocity = ball_speed * math.fabs(math.cos(bounce_angle)) * -1
-            self.y_velocity = ball_speed * math.sin(bounce_angle)
+            self.y_velocity = ball_speed * math.sin(bounce_angle) * -1
 
 
 
@@ -140,6 +140,22 @@ def game_loop():
             player_two.move_down()
         pong_players.update()
         pong_balls.update()
+
+        if pygame.sprite.spritecollide(player_one, pong_balls, False):
+            ball.rect.x = player_one.rect.x + player_one.width
+            ball.player_bounce(player_one, 'P1')
+        elif pygame.sprite.spritecollide(player_two, pong_balls, False):
+            ball.rect.x = player_two.rect.x - ball.side_length
+            ball.player_bounce(player_two, 'P2')
+        
+        ball.wall_bounce()
+
+        if ball.rect.x <= 0:
+            print("player one wins")
+            quit_game()
+        elif ball.rect.x >= DISPLAY_WIDTH - ball.side_length:
+            print("player one wins")
+            quit_game()
 
         GAME_DISPLAY.fill(BLACK)
 
